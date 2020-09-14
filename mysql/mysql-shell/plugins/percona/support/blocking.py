@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def getWaitingTrx(session):
+def get_waiting_trx(session):
   query = "SELECT r.trx_id waiting_trx_id,r.trx_mysql_thread_id waiting_thread,r.trx_query waiting_query,b.trx_id blocking_trx_id,b.trx_mysql_thread_id blocking_thread,b.trx_query blocking_query FROM information_schema.innodb_lock_waits w INNER JOIN information_schema.innodb_trx b ON b.trx_id = w.blocking_trx_id INNER JOIN information_schema.innodb_trx r ON r.trx_id = w.requesting_trx_id;"
 
   result = session.run_sql(query)
@@ -11,7 +11,7 @@ def getWaitingTrx(session):
   return {'report': report}
 
 
-def getBlockingThd(session,args,options):
+def get_blocking_thd(session,args,options):
   pid = options['processlist_id']
   query = ("SELECT THREAD_ID FROM performance_schema.threads WHERE PROCESSLIST_ID = %d" % pid)
 
@@ -23,7 +23,7 @@ def getBlockingThd(session,args,options):
   return {'report': report}
 
 
-def getBlockingTrx(session,args,options):
+def get_blocking_trx(session,args,options):
   tid = options['thread_id']
 
   if (options.has_key('all')):

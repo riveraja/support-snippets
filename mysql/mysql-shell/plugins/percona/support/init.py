@@ -4,7 +4,7 @@ from percona.support import mdl, utils, slow, blocking
 shell.register_report(
   'get_blocking_thd',
   'list',
-  blocking.getBlockingThd,
+  blocking.get_blocking_trx,
   {
      'brief': 'Show blocking thread.',
      'details': ['Needs the SELECT privilege on performance_schema.threads table.'],
@@ -24,7 +24,7 @@ shell.register_report(
 shell.register_report(
   'get_waiting_trx',
   'list',
-  blocking.getWaitingTrx,
+  blocking.get_waiting_trx,
   {
      'brief': 'Show waiting thread.',
      'details': ['Needs the SELECT privilege on information_schema and performance_schema tables.'],
@@ -35,7 +35,7 @@ shell.register_report(
 shell.register_report(
   'get_blocking_trx',
   'list',
-  blocking.getBlockingTrx,
+  blocking.get_blocking_trx,
   {
      'brief': 'Show blocking transaction.',
      'details': ['Needs the SELECT privileges on the performance_schema.events_statements_current table.'],
