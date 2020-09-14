@@ -95,5 +95,5 @@ FUNCTIONS
 ```
 
 Sample output:
-[Sample output](images/mysqlshellpluginsample.png)
+<img width="964" src="https://github.com/riveraja/support-snippets/blob/master/mysql/mysql-shell/plugins/percona/support/images/mysqlshellpluginsample.png" alt="sample image">
 
